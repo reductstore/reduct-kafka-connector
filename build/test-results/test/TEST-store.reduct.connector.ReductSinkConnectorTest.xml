@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="store.reduct.connector.ReductSinkConnectorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-07-06T09:40:00" hostname="UFA-NN-23-128" time="0.105">
+  <properties/>
+  <testcase name="taskConfigs()" classname="store.reduct.connector.ReductSinkConnectorTest" time="0.091"/>
+  <testcase name="config()" classname="store.reduct.connector.ReductSinkConnectorTest" time="0.002"/>
+  <testcase name="taskClass()" classname="store.reduct.connector.ReductSinkConnectorTest" time="0.004"/>
+  <testcase name="version()" classname="store.reduct.connector.ReductSinkConnectorTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+]]></system-err>
+</testsuite>

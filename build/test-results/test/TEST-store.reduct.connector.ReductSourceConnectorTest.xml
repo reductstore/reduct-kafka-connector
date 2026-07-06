@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="store.reduct.connector.ReductSourceConnectorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-07-06T09:40:02" hostname="UFA-NN-23-128" time="0.013">
+  <properties/>
+  <testcase name="taskConfigs()" classname="store.reduct.connector.ReductSourceConnectorTest" time="0.006"/>
+  <testcase name="config()" classname="store.reduct.connector.ReductSourceConnectorTest" time="0.001"/>
+  <testcase name="taskClass()" classname="store.reduct.connector.ReductSourceConnectorTest" time="0.002"/>
+  <testcase name="version()" classname="store.reduct.connector.ReductSourceConnectorTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id "io.freefair.lombok" version "8.11"
+    id "com.diffplug.spotless" version "7.0.0.BETA2"
+}
+
+version = '0.1.0'
+group = 'store.reduct'
+archivesBaseName = 'reduct-kafka-connector'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+spotless {
+    java {
+        importOrder()
+        removeUnusedImports()
+        eclipse()
+    }
+}
+
+dependencies {
+    compileOnly 'org.apache.kafka:connect-api:3.7.0'
+
+    implementation 'store.reduct:reduct-java:0.1.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'org.slf4j:slf4j-api:2.0.13'
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'org.apache.kafka:connect-api:3.7.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    dependsOn(tasks.assemble)
+}
+
+tasks.register('copyDependencies', Copy) {
+    from configurations.runtimeClasspath
+    into layout.buildDir.dir('libs/lib')
+}
