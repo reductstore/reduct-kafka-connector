@@ -1,2 +1,0 @@
-rootProject.name = 'reduct-kafka-connector'
-includeBuild('../reduct-java')

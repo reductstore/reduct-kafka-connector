@@ -1,0 +1,7 @@
+store\reduct\connector\ReductSourceTask.class
+store\reduct\connector\config\ReductSinkConfig.class
+store\reduct\connector\ReductSinkConnector.class
+store\reduct\connector\ReductSinkTask.class
+store\reduct\connector\ReductSourceConnector.class
+store\reduct\connector\version\Version.class
+store\reduct\connector\config\ReductSourceConfig.class

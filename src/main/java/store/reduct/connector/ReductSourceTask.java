@@ -3,6 +3,7 @@ package store.reduct.connector;
 import java.net.http.HttpClient;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class ReductSourceTask extends SourceTask {
 	Bucket bucket;
 	ReductSourceConfig config;
 	List<String> entryNames;
+	final Map<String, Long> lastReadOffsets = new HashMap<>();
 
 	@Override
 	public String version() {
@@ -67,21 +69,24 @@ public class ReductSourceTask extends SourceTask {
 
 			Map<String, String> sourcePartition = Map.of("bucket", config.getBucket(), "entry", entryName);
 
-			Map<String, Object> lastOffset = context.offsetStorageReader().offset(sourcePartition);
 			long startTs;
-			if (lastOffset != null) {
-				startTs = (Long) lastOffset.get("timestamp") + 1;
+			Long lastRead = lastReadOffsets.get(entryName);
+			if (lastRead != null) {
+				startTs = lastRead + 1;
 			} else {
-				startTs = config.getStartTimestamp();
+				Map<String, Object> lastOffset = context.offsetStorageReader().offset(sourcePartition);
+				startTs = lastOffset != null ? (Long) lastOffset.get("timestamp") + 1 : config.getStartTimestamp();
 			}
 
-			Iterator<Record> iterator = bucket.query(entryName, startTs, null, (long) config.getTtl());
+			long stopTs = System.currentTimeMillis() * 1000;
+			Iterator<Record> iterator = bucket.query(entryName, startTs, stopTs, (long) config.getTtl());
 			while (iterator.hasNext() && records.size() < MAX_BATCH_SIZE) {
 				Record rec = iterator.next();
 				org.apache.kafka.connect.data.Schema schema = null;
 				SourceRecord sourceRecord = new SourceRecord(sourcePartition, Map.of("timestamp", rec.getTimestamp()),
 						config.getKafkaTopic(), null, schema, null, schema, rec.getBody(), rec.getTimestamp() / 1000);
 				records.add(sourceRecord);
+				lastReadOffsets.put(entryName, rec.getTimestamp());
 			}
 		}
 

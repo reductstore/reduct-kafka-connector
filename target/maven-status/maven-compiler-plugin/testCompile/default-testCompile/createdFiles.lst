@@ -1,0 +1,4 @@
+store\reduct\connector\ReductSourceConnectorTest.class
+store\reduct\connector\ReductSinkConnectorTest.class
+store\reduct\connector\ReductSinkTaskTest.class
+store\reduct\connector\ReductSourceTaskTest.class

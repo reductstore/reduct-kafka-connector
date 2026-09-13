@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/172538894/reduct-java.main.iml" filepath="$PROJECT_DIR$/.idea/modules/172538894/reduct-java.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/reduct-kafka-connector.main.iml" filepath="$PROJECT_DIR$/.idea/modules/reduct-kafka-connector.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/reduct-kafka-connector.test.iml" filepath="$PROJECT_DIR$/.idea/modules/reduct-kafka-connector.test.iml" />
     </modules>
