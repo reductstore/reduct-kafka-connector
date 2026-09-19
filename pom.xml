@@ -16,7 +16,7 @@
         <maven.compiler.release>17</maven.compiler.release>
 
         <kafka.version>3.7.0</kafka.version>
-        <reduct-java.version>0.1.0</reduct-java.version>
+        <reduct-java.version>0.2.0</reduct-java.version>
         <jackson.version>2.18.2</jackson.version>
         <slf4j.version>2.0.13</slf4j.version>
         <lombok.version>1.18.34</lombok.version>
